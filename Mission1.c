@@ -1,6 +1,4 @@
-#include "test.h"
-
-gr#include "struct.h"
+#include "struct.h"
 
 void initializeGraph(Graph* graph) {
     graph->Nbsommet = 0;
