@@ -127,61 +127,6 @@ void rechercheEnProfondeur(Graph* graph)
     free(visite);
 }
 
-/*bool parcoursProfondeur(Graph* graph, int sommet, bool* visite, int sommetArrive) 
-{
-    visite[sommet] = true;
-
-    printf("%d ", sommet);
-
-    if (sommet == sommetArrive) {
-        return true;
-    }
-
-    Noeud* successeurs = graph->listeSuccesseurs[sommet];
-    while (successeurs != NULL) {
-        int successeur = successeurs->sommet;
-        if (!visite[successeur]) {
-            if (parcoursProfondeur(graph, successeur, visite, sommetArrive)) {
-                return true;
-            }
-        }
-        successeurs = successeurs->suivant;
-    }
-
-    return false;
-}*/
-
-
-
-
-
-
-
-
-/*// Fonction auxiliaire pour explorer un sommet
-void explorer(Graph* graph, int sommet, bool visited[]) {
-    visited[sommet] = true;
-    printf("%d ", sommet);
-
-    for (int t = 0; t < graph->Nbsommet; t++) {
-        if (graph->MatriceAdjacente[sommet][t] && !visited[t]) {
-            explorer(graph, t, visited);
-        }
-    }
-}
-
-//Parcours en profondeur du graphe
-void parcoursProfondeur(Graph* graph) {
-    bool visited[MAX_VERTICES] = { false };
-
-    printf("Parcours en profondeur : ");
-    for (int s = 0; s < graph->Nbsommet; s++) {
-        if (!visited[s]) {
-            explorer(graph, s, visited);
-        }
-    }
-    printf("\n");
-}*/
 
 
 
