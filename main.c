@@ -23,12 +23,7 @@ int main()
     printSuccessorList(&graph);
 
     rechercheEnProfondeur(&graph);
-
-    /*bool* visite = (bool*)calloc(graph.Nbsommet, sizeof(bool));
-    parcoursProfondeur(&graph, graph.sommetDeDepart, visite, graph.sommetArrive);
-    printf("\n");*/
-
-
+    
     fclose(fichier);
     
 
