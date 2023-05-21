@@ -169,7 +169,23 @@ Graph lireFichierTerrain(const char* nomFichier) {
         listeSuccesseurs[i] = NULL;
         for (int j = 0; j < nbSommets; j++) {
             if (matriceAdjacente[i][j] != -1) {
-                Noe
+                Noeud* nouveauNoeud = (Noeud*) malloc(sizeof(Noeud));
+                nouveauNoeud->sommet = j;
+                nouveauNoeud->suivant = listeSuccesseurs[i];
+                listeSuccesseurs[i] = nouveauNoeud;
+            }
+        }
+    }
+    
+    // Remplir la structure de graphe
+    graphe.sommetDeDepart = sommetDeDepart;
+    graphe.sommetArrive = sommetArrive;
+    graphe.Nbsommet = nbSommets;
+    graphe.MatriceAdjacente = matriceAdjacente;
+    graphe.listeSuccesseurs = listeSuccesseurs;
+    
+    return graphe;
+}
 
 
 
