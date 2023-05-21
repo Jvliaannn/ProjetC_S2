@@ -1,5 +1,5 @@
-#ifndef STRUCTURES_H
-#define STRUCTURES_H
+#ifndef STRUCTURES2_H
+#define STRUCTURES2_H
 
 typedef struct {
     int identifiant;
