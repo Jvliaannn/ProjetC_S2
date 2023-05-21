@@ -108,82 +108,69 @@ CoutsTypes lireFichierType(const char* nomFichier) {
 }
 
 
+// Cette fonction lit un fichier représentant un terrain et construit un graphe à partir de celui-ci.
+// Elle renvoie le graphe construit.
+// Le paramètre nomFichier est une chaîne de caractères représentant le nom du fichier à lire.
 Graph lireFichierTerrain(const char* nomFichier) {
-    FILE* fichier = fopen(nomFichier, "r");
+    FILE* fichier = fopen(nomFichier, "r"); // Ouvre le fichier en mode lecture
     Graph graphe;
     
     if (fichier == NULL) {
-        fprintf(stderr, "Erreur lors del'ouverture du fichier.\n");
+        fprintf(stderr, "Erreur lors de l'ouverture du fichier.\n"); // Affiche un message d'erreur si l'ouverture du fichier a échoué
         graphe.sommetDeDepart = -1;
         graphe.sommetArrive = -1;
         graphe.Nbsommet = 0;
         graphe.MatriceAdjacente = NULL;
         graphe.listeSuccesseurs = NULL;
-    
-    return graphe;
+        
+        return graphe;
     }
-
+    
     char ligne[MAX_LINE_LENGTH];
     int sommetDeDepart = -1;
     int sommetArrive = -1;
     int nbSommets = 0;
-
+    
     // Lire les premières lignes pour obtenir le sommet de départ, le sommet d'arrivée et le nombre de sommets
     if (fgets(ligne, sizeof(ligne), fichier) != NULL) {
-    sscanf(ligne, "Debut: %d", &sommetDeDepart);
+        sscanf(ligne, "Debut: %d", &sommetDeDepart);
     }
-
+    
     if (fgets(ligne, sizeof(ligne), fichier) != NULL) {
-    sscanf(ligne, "Fin: %d", &sommetArrive);
+        sscanf(ligne, "Fin: %d", &sommetArrive);
     }
-
+    
     if (fgets(ligne, sizeof(ligne), fichier) != NULL) {
-    sscanf(ligne, "%d", &nbSommets);
+        sscanf(ligne, "%d", &nbSommets);
     }
-
+    
     // Allouer de la mémoire pour la matrice adjacente
     int** matriceAdjacente = (int**) malloc(nbSommets * sizeof(int*));
     for (int i = 0; i < nbSommets; i++) {
-    matriceAdjacente[i] = (int*) malloc(nbSommets * sizeof(int));
-    for (int j = 0; j < nbSommets; j++) {
-        matriceAdjacente[i][j] = -1; // Initialiser les coûts à -1 (pas de lien)
+        matriceAdjacente[i] = (int*) malloc(nbSommets * sizeof(int));
+        for (int j = 0; j < nbSommets; j++) {
+            matriceAdjacente[i][j] = -1; // Initialiser les coûts à -1 (pas de lien)
+        }
     }
-}
-
+    
     // Lire et construire la matrice adjacente
     while (fgets(ligne, sizeof(ligne), fichier) != NULL) {
-    int sommetOrigine, sommetDestination;
-    sscanf(ligne, "%d -> %d", &sommetOrigine, &sommetDestination);
+        int sommetOrigine, sommetDestination;
+        sscanf(ligne, "%d -> %d", &sommetOrigine, &sommetDestination);
+        
+        matriceAdjacente[sommetOrigine][sommetDestination] = 1; // Utilisez le coût approprié ici (1 dans votre exemple)
+    }
     
-    matriceAdjacente[sommetOrigine][sommetDestination] = 1; // Utilisez le coût approprié ici (1 dans votre exemple)
-}
-
-    fclose(fichier);
-
+    fclose(fichier); // Ferme le fichier
+    
     // Construire la liste des successeurs à partir de la matrice adjacente
     Noeud** listeSuccesseurs = (Noeud**) malloc(nbSommets * sizeof(Noeud*));
     for (int i = 0; i < nbSommets; i++) {
-    listeSuccesseurs[i] = NULL;
-    for (int j = 0; j < nbSommets; j++) {
-        if (matriceAdjacente[i][j] != -1) {
-            Noeud* nouveauNoeud = (Noeud*) malloc(sizeof(Noeud));
-            nouveauNoeud->sommet = j;
-            nouveauNoeud->suivant = listeSuccesseurs[i];
-            listeSuccesseurs[i] = nouveauNoeud;
-        }
-    }
-}
+        listeSuccesseurs[i] = NULL;
+        for (int j = 0; j < nbSommets; j++) {
+            if (matriceAdjacente[i][j] != -1) {
+                Noe
 
-    // Remplir la structure de graphe
-    graphe.sommetDeDepart = sommetDeDepart;
-    graphe.sommetArrive = sommetArrive;
-    graphe.Nbsommet = nbSommets;
-    graphe.MatriceAdjacente = matriceAdjacente;
-    graphe.listeSuccesseurs = listeSuccesseurs;
-
-    return graphe;
-
-}
 
 
 int trouverSommetMin(int distance[], int visite[], int n) {
