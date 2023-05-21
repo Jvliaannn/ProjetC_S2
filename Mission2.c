@@ -1,25 +1,32 @@
 #include "structures2.h"
 
-
+// Définition des constantes
 #define INT_MAX 2000
 #define MAX_LINE_LENGTH 100
 #define MAX_VERTICES 100
 
+// Fonction pour lire un fichier contenant les types de sommets
+// et stocker les informations dans une structure TypesGraphe
 TypesGraphe lireFichierTypeSommet(const char* nomFichier) {
+    // Ouverture du fichier en mode lecture
     FILE* fichier = fopen(nomFichier, "r");
+    
+    // Déclaration et initialisation de la structure TypesGraphe
     TypesGraphe typesGraphe;
     
     if (fichier == NULL) {
+        // Erreur lors de l'ouverture du fichier
         fprintf(stderr, "Erreur lors de l'ouverture du fichier.\n");
         typesGraphe.types = NULL;
         typesGraphe.nbTypes = 0;
         return typesGraphe;
     }
     
+    // Déclaration d'une variable pour stocker chaque ligne du fichier
     char ligne[MAX_LINE_LENGTH];
-    int nbLignes = 0;
     
     // Compter le nombre de lignes dans le fichier
+    int nbLignes = 0;
     while (fgets(ligne, sizeof(ligne), fichier) != NULL) {
         nbLignes++;
     }
@@ -37,18 +44,23 @@ TypesGraphe lireFichierTypeSommet(const char* nomFichier) {
         int numero;
         char nom[20];
         
+        // Extraire les informations de chaque ligne
         sscanf(ligne, "%d %s", &numero, nom);
         
+        // Stocker les informations dans la structure TypesGraphe
         typesGraphe.types[i].identifiant = numero;
         strncpy(typesGraphe.types[i].nom, nom, sizeof(typesGraphe.types[i].nom));
         
         i++;
     }
     
+    // Fermeture du fichier
     fclose(fichier);
     
+    // Retourner la structure TypesGraphe contenant les types de sommets
     return typesGraphe;
 }
+
 
 CoutsTypes lireFichierType(const char* nomFichier) {
     FILE* fichier = fopen(nomFichier, "r");
