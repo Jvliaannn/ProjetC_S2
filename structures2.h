@@ -1,6 +1,11 @@
 #ifndef STRUCTURES2_H
 #define STRUCTURES2_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+
 typedef struct {
     int identifiant;
     char nom[20];
