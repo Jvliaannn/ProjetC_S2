@@ -35,4 +35,11 @@ typedef struct {
     int nbCouts;
 } CoutsTypes;
 
+TypesGraphe lireFichierTypeSommet(const char* nomFichier);
+CoutsTypes lireFichierType(const char* nomFichier);
+Graph lireFichierTerrain(const char* nomFichier);
+int trouverSommetMin(int distance[], int visite[], int n);
+void dijkstra(Graph graphe, int debut, int fin);
+
+
 #endif
