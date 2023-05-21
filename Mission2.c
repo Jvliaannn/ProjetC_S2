@@ -1,7 +1,6 @@
 #include "structures2.h"
 
 // Définition des constantes
-#define INT_MAX 2000
 #define MAX_LINE_LENGTH 100
 #define MAX_VERTICES 100
 
