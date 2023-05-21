@@ -62,23 +62,27 @@ TypesGraphe lireFichierTypeSommet(const char* nomFichier) {
 }
 
 
+// Cette fonction lit les informations de coûts à partir d'un fichier texte
+// et retourne une structure contenant ces informations.
+// - nomFichier : le nom du fichier à lire
+// - Retour : une structure CoutsTypes contenant les coûts lus
 CoutsTypes lireFichierType(const char* nomFichier) {
-    FILE* fichier = fopen(nomFichier, "r");
-    CoutsTypes coutsTypes;
+    FILE* fichier = fopen(nomFichier, "r"); // Ouvre le fichier en mode lecture
+    CoutsTypes coutsTypes; // Structure de données pour stocker les coûts
     
     if (fichier == NULL) {
-        fprintf(stderr, "Erreur lors de l'ouverture du fichier.\n");
+        fprintf(stderr, "Erreur lors de l'ouverture du fichier.\n"); // Affiche un message d'erreur si l'ouverture du fichier échoue
         coutsTypes.couts = NULL;
         coutsTypes.nbCouts = 0;
         return coutsTypes;
     }
     
-    char ligne[MAX_LINE_LENGTH];
-    int nbCouts = 0;
+    char ligne[MAX_LINE_LENGTH]; // Variable pour stocker une ligne lue depuis le fichier
+    int nbCouts = 0; // Variable pour stocker le nombre de coûts
     
     // Lire la première ligne pour obtenir le nombre de coûts
     if (fgets(ligne, sizeof(ligne), fichier) != NULL) {
-        sscanf(ligne, "%d", &nbCouts);
+        sscanf(ligne, "%d", &nbCouts); // Lit le nombre de coûts à partir de la ligne
     }
     
     // Allouer de la mémoire pour le tableau de coûts
@@ -91,17 +95,18 @@ CoutsTypes lireFichierType(const char* nomFichier) {
             char nom[20];
             double cout;
             
-            sscanf(ligne, "%s %lf", nom, &cout);
+            sscanf(ligne, "%s %lf", nom, &cout); // Lit le nom et le coût à partir de la ligne
             
-            strncpy(coutsTypes.couts[i].nom, nom, sizeof(coutsTypes.couts[i].nom));
-            coutsTypes.couts[i].cout = cout;
+            strncpy(coutsTypes.couts[i].nom, nom, sizeof(coutsTypes.couts[i].nom)); // Copie le nom dans la structure de données
+            coutsTypes.couts[i].cout = cout; // Stocke le coût dans la structure de données
         }
     }
     
-    fclose(fichier);
+    fclose(fichier); // Ferme le fichier
     
-    return coutsTypes;
+    return coutsTypes; // Retourne la structure contenant les coûts lus
 }
+
 
 Graph lireFichierTerrain(const char* nomFichier) {
     FILE* fichier = fopen(nomFichier, "r");
