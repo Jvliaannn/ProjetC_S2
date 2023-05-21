@@ -13,7 +13,7 @@ int main() {
     // Boucle pour traiter chaque fichier
     for (int i = 0; i < 2; i++) {
         // Lecture du fichier typesommet
-        TypesGraphe typesGraphe = lireFichierTypeSommet1(fichiersTypeSommets[i]);
+        TypesGraphe typesGraphe = lireFichierTypeSommet(fichiersTypeSommets[i]);
         // Vérification si la lecture a réussi
         if (typesGraphe.types != NULL) {
             printf("Contenu du fichier typesommet %d :\n", i+1);
@@ -31,7 +31,7 @@ int main() {
         }
 
         // Lecture du fichier type
-        CoutsTypes coutsTypes = lireFichierType1(fichiersTypes[i]);
+        CoutsTypes coutsTypes = lireFichierType(fichiersTypes[i]);
         // Vérification si la lecture a réussi
         if (coutsTypes.couts != NULL) {
             printf("Contenu du fichier type %d :\n", i+1);
@@ -50,14 +50,15 @@ int main() {
         }
 
         // Lecture du fichier terrain
-        Graph graphe = lireFichierTerrain1(fichiersTerrains[i]);
+        Graph graphe = lireFichierTerrain(fichiersTerrains[i]);
         // Vérification si la lecture a réussi
         if (graphe.MatriceAdjacente != NULL && graphe.listeSuccesseurs != NULL) {
             printf("Contenu du fichier terrain %d :\n", i+1);
             // Accéder aux informations du graphe
             int sommetDeDepart = graphe.sommetDeDepart;
             int sommetArrive = graphe.sommetArrive;
-            int nbSommets = graphe.Nbsommet;            printf("Sommet de départ : %d\n", sommetDeDepart);
+            int nbSommets = graphe.Nbsommet;            
+            printf("Sommet de départ : %d\n", sommetDeDepart);
             printf("Sommet d'arrivée : %d\n", sommetArrive);
             printf("Nombre de sommets : %d\n", nbSommets);
 
