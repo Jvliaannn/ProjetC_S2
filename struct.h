@@ -10,6 +10,7 @@
 
 typedef struct Noeud {
     int sommet;
+    int poids;
     struct Noeud* suivant;
 } Noeud;
 
@@ -20,18 +21,19 @@ typedef struct {
     int Nbsommet;
     int** MatriceAdjacente;
     Noeud** listeSuccesseurs;
-    
-} Graph;
+} Graphe;
 
-void initializeGraph(Graph* graph);
-void addEdge(Graph* graph, int sommet, int successeurs);
-void LireGraphe(Graph* graph, FILE* fichier);
-void printAdjacencyMatrix(Graph* graph);
-void convertirMatriceEnListeSuccesseurs(Graph* graph);
-void printSuccessorList(Graph* graph);
-void parcoursProfondeur(Graph* graph, int sommet, bool* visite);
-void rechercheEnProfondeur(Graph* graph);
+void initializeGraph(Graphe* graph);
+void Ajout_Arc(Graphe* graph, int sommet, int successeurs);
+void Ajout_Arc2(Graphe* graph, int sommet, int successeurs, int poids);
+void LireGraphe(Graphe* graph, FILE* fichier);
+void LireGraphe2(Graphe* graph, FILE* fichier2);
+void Afficher_Matrice_Adjacente(Graphe* graph);
+void convertirMatriceEnListeSuccesseurs(Graphe* graph);
+void Afficher_Successeur(Graphe* graph);
+void parcoursProfondeur(Graphe* graph, int sommet, bool* visite);
+void rechercheEnProfondeur(Graphe* graph);
 
 
 
-#endif
+#endif 
