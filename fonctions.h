@@ -4,12 +4,11 @@
 #include<stdio.h>
 #include "structures2.h"
 
-TypesGraphe lireFichierTypeSommet1(const char* typeSommet1);
-CoutsTypes lireFichierType1(const char* type1);
-Graph lireFichierTerrain1(const char* terrain1);
+TypesGraphe lireFichierTypeSommet(const char* nomFichier);
+CoutsTypes lireFichierType(const char* nomFichier);
+Graph lireFichierTerrain(const char* nomFichier);
 int trouverSommetMin(int distance[], int visite[], int n);
 void dijkstra(Graph graphe, int debut, int fin);
-
 
 
 
