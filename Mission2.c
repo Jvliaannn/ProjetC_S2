@@ -1,8 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "structures2.h"
-#include "fonctions.h"
+
 
 #define INT_MAX 2000
 #define MAX_LINE_LENGTH 100
