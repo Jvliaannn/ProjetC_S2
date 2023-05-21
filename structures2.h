@@ -35,4 +35,4 @@ typedef struct {
     int nbCouts;
 } CoutsTypes;
 
-#endif /* STRUCTURES_H */
+#endif
