@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "structures2.h"
-#include "fonctions.h"
 
 int main() {
     // Tableaux contenant les noms des fichiers texte
