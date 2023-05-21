@@ -99,12 +99,6 @@ int main() {
             printf("Erreur lors de la lecture du fichier terrain %d\n", i+1);
         }
 
-        // Appel à la fonction Dijkstra
-        dijkstra(graphe, graphe.sommetDeDepart, graphe.sommetArrive);
-
-        printf("\n");
-    }
-
     return 0;
 }
 
